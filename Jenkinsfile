@@ -20,7 +20,9 @@ pipeline {
 
     stage('Upload Docker Image To Repo') {
       steps {
-        echo 'hello'
+        withDockerRegistry(credentialsId: 'docker-hub-creds') {
+    sh   "docker push razotron/todoapi:$9BUILD_ID)"
+}
       }
     }
 
