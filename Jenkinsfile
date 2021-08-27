@@ -21,7 +21,7 @@ pipeline {
     stage('Upload Docker Image To Repo') {
       steps {
         withDockerRegistry(credentialsId: 'docker-hub-creds', url: 'https://index.docker.io/v1/') {
-    sh  "docker push razotron/todoapi:$9BUILD_ID)"
+    sh  "docker push razotron/todoapi:$(BUILD_ID)"
 }
       }
     }
