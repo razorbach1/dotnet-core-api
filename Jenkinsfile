@@ -12,5 +12,11 @@ pipeline {
       }
     }
 
+    stage('Build Image Of Docker') {
+      steps {
+        sh 'docker build -t razotron/todoapi:$9BUILD_ID) .'
+      }
+    }
+
   }
 }
