@@ -12,7 +12,7 @@ FROM mcr.microsoft.com/dotnet/aspnet:3.1
 MAINTAINER Raz O
 
 WORKDIR /app
-
+EXPOSE 80
 COPY --from=build-env /app/out .
 
 CMD ["dotnet", "TodoApi.dll"]
