@@ -14,7 +14,7 @@ pipeline {
 
     stage('Build Image Of Docker') {
       steps {
-        sh 'docker build -t razotron/todoapi:3.0.0 .'
+        sh 'docker build -t razotron/todoapi:4.0.0 .'
       }
     }
 
@@ -31,7 +31,7 @@ pipeline {
 
         stage('Run & Test The Image') {
           steps {
-            sh '''docker run -itd -p 80:80 --name todoapi razotron/todoapi:3.0.0; 
+            sh '''docker run -itd -p 80:80 --name todoapi razotron/todoapi:4.0.0; 
 sleep 3s; curl localhost:80; docker stop todoapi; docker rm todoapi'''
           }
         }
