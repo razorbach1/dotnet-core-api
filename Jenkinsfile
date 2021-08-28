@@ -14,7 +14,7 @@ pipeline {
 
     stage('Build Image Of Docker') {
       steps {
-        sh 'docker build -t razotron/todoapi:2.0.0 .'
+        sh 'docker build -t razotron/todoapi:1.0.0 .'
       }
     }
 
@@ -23,7 +23,7 @@ pipeline {
         stage('Upload Docker Image To Repo') {
           steps {
             withDockerRegistry(credentialsId: 'docker-hub-creds', url: 'https://index.docker.io/v1/') {
-              sh 'docker push razotron/todoapi:2.0.0'
+              sh 'docker push razotron/todoapi:1.0.0'
             }
 
           }
@@ -31,7 +31,7 @@ pipeline {
 
         stage('Run & Test The Image') {
           steps {
-            sh '''docker run -itd -p 80:80 --name todoapi razotron/todoapi:2.0.0; 
+            sh '''docker run -itd -p 80:80 --name todoapi razotron/todoapi:1.0.0; 
 sleep 3s; curl localhost:80; docker stop todoapi; docker rm todoapi'''
           }
         }
